@@ -3,6 +3,7 @@ from flask_socketio import SocketIO
 from flask_cors import CORS
 import json
 from engineio.payload import Payload
+import sys
 
 Payload.max_decode_packets = 50
 
@@ -80,6 +81,10 @@ class LyricSyncer:
 
             self.currentLine = None
 
+    def output(self, lyrics):
+        print(lyrics)
+        sys.stdout.flush()
+
 lyric_syncer = LyricSyncer()
 
 app = Flask(__name__)
@@ -87,11 +92,8 @@ socketio = SocketIO(app, cors_allowed_origins="https://xpui.app.spotify.com")
 
 @socketio.on("connect")
 def con():
-    print("Connect")
-
-@socketio.on("time-stamp")
-def handle_time_stamp(time_stamp):
-    pass
+    print("Connected to spotify lyric server")
+    sys.stdout.flush()
 
 @socketio.on("lyrics")
 def handle_lyrics(lyrics):
