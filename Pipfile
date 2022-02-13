@@ -7,7 +7,9 @@ name = "pypi"
 flask-socketio = "*"
 flask = "*"
 flask-cors = "*"
-simple-websocket = "*"
+gunicorn = "*"
+gevent = "*"
+gevent-websocket = "*"
 
 [dev-packages]
 
