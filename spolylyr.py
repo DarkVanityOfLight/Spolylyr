@@ -28,12 +28,10 @@ class LyricSyncer:
                     newLine = line
                 else:
                     break
-        else:
-            newLine = self.stringify_lyrics()
 
         if newLine and newLine != self.currentLine:
             self.currentLine = newLine
-            print(self.stringify_current_line())
+            self.output(self.stringify_current_line())
 
     def stringify_lyrics(self):
 
@@ -58,8 +56,6 @@ class LyricSyncer:
                 words.append(word["string"])
 
             return " ".join(words)
-        else:
-            return self.stringify_lyrics()
 
 
 
@@ -68,16 +64,19 @@ class LyricSyncer:
             if not lyrics:
                 self.isSynced = False 
                 self.availableLyrics = False 
+                self.output("There are no lyrics for this song")
 
             elif not lyrics[0].get("time", None):
                 self.isSynced = False
                 self.availableLyrics = True
                 self.lyrics = lyrics
+                self.output(self.stringify_lyrics())
             
             else:
                 self.isSynced = True
                 self.availableLyrics = True
                 self.lyrics = lyrics
+                self.output("")
 
             self.currentLine = None
 
