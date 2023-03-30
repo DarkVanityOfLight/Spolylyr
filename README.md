@@ -1,3 +1,6 @@
+# The End
+This project was really messy to setup and not optimized in the slightest so I rewrote it entirely in rust check it out at [Rustylyr](https://github.com/DarkVanityOfLight/RustyLyr)
+
 # Spolylyr
 Spolylyr is a polybar module that displays the current lyrics for a song playing on spotify. For this to work you have to install the SpotifyLyricServer via Spicetify.
 
